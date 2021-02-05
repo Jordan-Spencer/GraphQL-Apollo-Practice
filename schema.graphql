@@ -1,0 +1,27 @@
+type Flag {
+  emoji: String!
+}
+
+type Currency {
+  symbol: String!
+  name: String!
+}
+
+type Language {
+  name
+}
+
+type Country {
+  _id: String!
+  name: String!
+  role: Role!
+  flag: Flag!
+  currencies: [Currency!]!
+  officialLanguages: [Language!]!
+  borders: [Country!]!
+}
+
+type Query {
+  Country: [Country!]!
+  Country(_id: String!, first: Int!): [Country!]!
+}

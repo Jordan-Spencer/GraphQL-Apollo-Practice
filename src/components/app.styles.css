@@ -1,0 +1,9 @@
+thead, th, td, tr {
+    font-size: 12px;
+    text-align: justify;
+    border-bottom: 1px solid #000;
+}
+
+table {
+    width: 100%;
+}
