@@ -2824,6 +2824,11 @@
     "js-yaml" "^3.13.1"
     "parse-json" "^4.0.0"
 
+"country-code-emoji@^2.2.0":
+  "integrity" "sha512-iK7tw8pRbFIad7a3UDbx13SJpZj4ZReozc6oW6K6Wu4sAphQkJVxK8qfaPjFIXp22RoP/238WEDrKpIWxxI9CQ=="
+  "resolved" "https://registry.npmjs.org/country-code-emoji/-/country-code-emoji-2.2.0.tgz"
+  "version" "2.2.0"
+
 "create-ecdh@^4.0.0":
   "integrity" "sha512-GbEHQPMOswGpKXM9kCWVrremUcBmjteUaQ01T9rkKCPDXfUHX0IoP9LpHYo2NPFampa4e+/pFDc3jQdxrxQLaw=="
   "resolved" "https://registry.npmjs.org/create-ecdh/-/create-ecdh-4.0.3.tgz"

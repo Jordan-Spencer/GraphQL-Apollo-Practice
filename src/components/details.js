@@ -3,12 +3,13 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 import './Details.styles.css'
-import emojiFlags from 'emoji-flags';
+import { countryCodeEmoji } from './country-code-emoji';
 
 const Details = ({ match: {params: {id}}}) => {
 
+  const { countryCodeEmoji } = require('country-code-emoji');
+
   const countryId = `${id}`;
-  console.log({countryId});
 
   const COUNTRY_DETAILS_QUERY = gql`
   query ($_id: String!) {
@@ -52,7 +53,7 @@ const Details = ({ match: {params: {id}}}) => {
       <pre>
       {data.Country.map(({_id, name, capital, flag, currencies, officialLanguages, borders, subregion}) =>
           <div>
-            <h1>{name} {emojiFlags.countryCode(flag.emoji)} <Link to='/'><button>back</button></Link></h1>
+            <h1>{name} {countryCodeEmoji('US')} <Link to='/'><button>back</button></Link></h1>
           <table>
           <thead>
             <tr><th>CAPITAL</th><th>CURRENCY</th><th>LANGUAGES</th><th>BORDER COUNTRIES</th><th>REGION</th></tr>
