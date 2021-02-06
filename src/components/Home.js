@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
-import { Details } from './details';
-import './app.styles.css';
+import Details from './Details';
+import './Home.styles.css';
 
 const ALL_COUNTRIES_QUERY = gql`
   query {
@@ -18,7 +18,7 @@ const ALL_COUNTRIES_QUERY = gql`
   }
 `;
 
-export const App = () => {
+const Home = () => {
     const { loading, error, data } = useQuery(ALL_COUNTRIES_QUERY);
   
     if (loading) {
@@ -29,20 +29,12 @@ export const App = () => {
       return <p>Error: {JSON.stringify(error)}</p>;
     }
 
-    function handleClick({name}, e) {
-        e.preventDefault();
-        // console.log(`${name} was clicked`)
-        return (
-            <Router>
-                <Link to='/details' />
-                <Switch>
-                    <Route path='/details'>
-                        <Details name={name}/>
-                    </Route>
-                </Switch>
-            </Router>
-        );
-    }
+    // function handleClick({name}, e) {
+    //     e.preventDefault();
+    //     console.log(`${name} was clicked`);
+    // }
+
+    // onClick={(e) => handleClick({name}, e)}
   
     return (
       <pre>
@@ -53,8 +45,8 @@ export const App = () => {
             </thead>
             <tbody>
             {data.Country.map(({ _id, name, capital, officialLanguages}) => 
-            <tr className='country' key={_id} onClick={(e) => handleClick({name}, e)}>
-                <td key={name}>{name}</td>
+            <tr className='country' key={_id}>
+                <td key={name}><Link to={`/details/${_id}`}>{name}</Link></td>
                 <td key={`capital ${capital}`}>{capital}</td>
                 <td key={officialLanguages}>{officialLanguages.map(({name}) =>
                     JSON.stringify(name).slice(1).replace(/"/g, ", ")
@@ -67,3 +59,5 @@ export const App = () => {
       </pre>
     );
   };
+
+  export default Home;

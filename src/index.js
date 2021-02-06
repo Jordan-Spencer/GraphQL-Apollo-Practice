@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import env from './env';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
-import { App } from './components/app';
-import { BrowserRouter as Router } from "react-router-dom";
+import Home from './components/Home';
+import Details from './components/Details';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './index.styles.css';
 
 export const client = new ApolloClient({
@@ -14,7 +15,8 @@ export const client = new ApolloClient({
 const Root = () => (
   <Router>
     <ApolloProvider client={client}>
-      <App />
+      <Route exact path="/" component={Home} />
+      <Route path="/details/:id" component={Details} />
     </ApolloProvider>
   </Router>
 );
