@@ -29,6 +29,9 @@ const Details = ({ match: {params: {id}}}) => {
         borders {
             name
         }
+        subregion {
+            name
+        }
     }
   }
 `;
@@ -44,17 +47,15 @@ const Details = ({ match: {params: {id}}}) => {
     if (error) {
       return <p>Error: {JSON.stringify(error)}</p>;
     }
-
-    // {emojiFlags.countryCode()}
   
     return (
       <pre>
-      {data.Country.map(({_id, name, capital, flag, currencies, officialLanguages, borders}) =>
+      {data.Country.map(({_id, name, capital, flag, currencies, officialLanguages, borders, subregion}) =>
           <div>
-            <h1>{name} {flag.emoji} <Link to='/'><button>back</button></Link></h1>
+            <h1>{name} {emojiFlags.countryCode(flag.emoji)} <Link to='/'><button>back</button></Link></h1>
           <table>
           <thead>
-            <tr><th>CAPITAL</th><th>CURRENCY</th><th>LANGUAGES</th><th>BORDER COUNTRIES</th></tr>
+            <tr><th>CAPITAL</th><th>CURRENCY</th><th>LANGUAGES</th><th>BORDER COUNTRIES</th><th>REGION</th></tr>
           </thead>
           <tbody>
             <tr>
@@ -68,6 +69,7 @@ const Details = ({ match: {params: {id}}}) => {
                 JSON.stringify(name).slice(1).replace(/"/g, ", "))}</td>
               <td>{borders.map(({name}) =>
               JSON.stringify(name).slice(1).replace(/"/g, ", "))}</td>
+              <td>{subregion.name}</td>
             </tr>
           </tbody>
           </table>
