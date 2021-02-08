@@ -28,13 +28,6 @@ const Home = () => {
     if (error) {
       return <p>Error: {JSON.stringify(error)}</p>;
     }
-
-    // function handleClick({name}, e) {
-    //     e.preventDefault();
-    //     console.log(`${name} was clicked`);
-    // }
-
-    // onClick={(e) => handleClick({name}, e)}
   
     return (
       <pre>
