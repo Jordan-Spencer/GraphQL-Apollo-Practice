@@ -1,3 +1,7 @@
 button {
-    align-content: right;
+  align-content: right;
+}
+
+img {
+  height: 30px;
 }

@@ -1,5 +1,6 @@
 type Flag {
   emoji: String!
+  emojiUnicode: String!
 }
 
 type Currency {
