@@ -43,6 +43,12 @@ const Details = ({
     variables: { _id: `${countryId}` },
   });
 
+  const checkBorders = (props) => {
+    if (props) {
+      return props.map(({ name }) => name).reduce((prev, curr) => [prev, ', ', curr]);
+    }
+  };
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -87,7 +93,7 @@ const Details = ({
                       .reduce((prev, curr) => [prev, ', ', curr])}
                   </td>
                   <td>
-                    {borders.map(({ name }) => name).reduce((prev, curr) => [prev, ', ', curr])}
+                    <checkBorders props={borders} />
                   </td>
                   <td>{subregion.name}</td>
                 </tr>
